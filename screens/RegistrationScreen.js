@@ -4,26 +4,40 @@ import {StyleSheet} from 'react-native';
 import {Heading} from '../components/Heading';
 import {Input} from '../components/Input';
 import {FilledButton} from '../components/FilledButton';
-import {TextButton} from '../components/TextButton';
 import {Error} from '../components/Error';
+import {IconButton} from '../components/IconButton';
 import {AuthContainer} from '../components/AuthContainer';
 import {AuthContext} from '../contexts/AuthContext';
 import {Loading} from '../components/Loading';
 
-export function LoginScreen({navigation}) {
-  const {login} = React.useContext(AuthContext);
-  const [email, setEmail] = React.useState('shritej');
-  const [password, setPassword] = React.useState('shri@123');
+export function RegistrationScreen({navigation}) {
+  const {register} = React.useContext(AuthContext);
+  const [email, setEmail] = React.useState('');
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState('');
 
   return (
     <AuthContainer>
-      <Heading style={styles.title}>LOGIN</Heading>
+      <IconButton
+        style={styles.closeIcon}
+        name={'close-circle-outline'}
+        onPress={() => {
+          navigation.pop();
+        }}
+      />
+      <Heading style={styles.title}>REGISTRATION</Heading>
       <Error error={error} />
       <Input
         style={styles.input}
         placeholder={'Username'}
+        value={username}
+        onChangeText={setUsername}
+      />
+      <Input
+        style={styles.input}
+        placeholder={'Email'}
         keyboardType={'email-address'}
         value={email}
         onChangeText={setEmail}
@@ -36,22 +50,17 @@ export function LoginScreen({navigation}) {
         onChangeText={setPassword}
       />
       <FilledButton
-        title={'Login'}
+        title={'Register'}
         style={styles.loginButton}
         onPress={async () => {
           try {
             setLoading(true);
-            await login(email, password);
+            await register(email,username, password);
+            navigation.pop();
           } catch (e) {
             setError(e.message);
             setLoading(false);
           }
-        }}
-      />
-      <TextButton
-        title={'Have u an account? Create one'}
-        onPress={() => {
-          navigation.navigate('Registration');
         }}
       />
       <Loading loading={loading} />
@@ -68,5 +77,10 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     marginVertical: 32,
+  },
+  closeIcon: {
+    position: 'absolute',
+    top: 60,
+    right: 16,
   },
 });
