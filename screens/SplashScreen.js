@@ -1,11 +1,14 @@
 import React from 'react';
-import {View, StyleSheet,Text} from 'react-native';
-import {useTheme} from '@react-navigation/native';
+import { View, StyleSheet, Image } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 export function SplashScreen() {
-  const {colors} = useTheme();
-  return (<View style={[styles.container, {backgroundColor: colors.primary}]} >
-                <Text style={styles.text}>E-Store</Text>
+  const { colors } = useTheme();
+  return (<View style={[styles.container, { backgroundColor: 'white' }]} >
+    <Image
+      style={styles.thumb}
+      source={require('../assets/eStoreLogo.png')}
+    />
 
   </View>);
 }
@@ -13,14 +16,23 @@ export function SplashScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+
   },
-  text:{
-    textAlign:'center',
-    alignContent:'center',
-    color:'white',
-    fontSize:60,
-    marginTop:120,
+  text: {
+    textAlign: 'center',
+    alignContent: 'center',
+    color: 'white',
+    fontSize: 60,
+    marginTop: 120,
     marginVertical: 20,
 
-  }
+  },
+  thumb: {
+    width: 150,
+    height: 150,
+  },
 });

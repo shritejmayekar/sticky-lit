@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet,Image} from 'react-native';
 
 import {Heading} from '../components/Heading';
 import {Input} from '../components/Input';
@@ -19,6 +19,10 @@ export function LoginScreen({navigation}) {
 
   return (
     <AuthContainer>
+      <Image
+      style={styles.imageLogo}
+      source={require('../assets/eStoreLogo.png')}
+    />
       <Heading style={styles.title}>LOGIN</Heading>
       <Error error={error} />
       <Input
@@ -62,11 +66,16 @@ export function LoginScreen({navigation}) {
 const styles = StyleSheet.create({
   title: {
     marginBottom: 48,
+    color:'purple',
   },
   input: {
     marginVertical: 8,
   },
   loginButton: {
     marginVertical: 32,
+  },
+  imageLogo: {
+    width: 150,
+    height: 150,
   },
 });

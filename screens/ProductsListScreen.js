@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {FlatList, StyleSheet,Image} from 'react-native';
 
 import {HeaderIconButton} from '../components/HeaderIconButton';
 import {AuthContext} from '../contexts/AuthContext';
@@ -13,8 +13,21 @@ export function ProductsListScreen({navigation}) {
   const switchTheme = React.useContext(ThemeContext);
   React.useLayoutEffect(() => {
     navigation.setOptions({
+      // headerLeft:() => (
+      //   <HeaderIconsContainer>
+      //   <Image
+      //   style={styles.imageLogo}
+      //   source={require('../assets/eStoreLogo.png')}
+      // />
+      // </HeaderIconsContainer>
+      // ),
       headerRight: () => (
+        
         <HeaderIconsContainer>
+            <Image
+        style={styles.imageLogo}
+        source={require('../assets/eStoreLogo.png')}
+      />
           <HeaderIconButton
             name={'color-palette'}
             onPress={() => {
@@ -35,7 +48,7 @@ export function ProductsListScreen({navigation}) {
 
   function renderProduct({item: product}) {
     return <Product product={product} onPress={
-      () => navigation.navigate("ProductDetail", {"product":JSON.stringify(product)})
+      () => navigation.navigate("ProductDetailScreen", {"product":JSON.stringify(product)})
 
     } />;
   }
@@ -54,5 +67,10 @@ const styles = StyleSheet.create({
   productsListContainer: {
     paddingVertical: 8,
     marginHorizontal: 8,
+  },
+  imageLogo: {
+    marginRight:75,
+    width: 43,
+    height: 43,
   },
 });

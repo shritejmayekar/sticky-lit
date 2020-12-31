@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://cors-anywhere.herokuapp.com/https://my-store-ecommerce.herokuapp.com';
+export const BASE_URL = 'https://my-store-ecommerce.herokuapp.com';

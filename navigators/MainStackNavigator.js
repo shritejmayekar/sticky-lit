@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {ProductsListScreen} from '../screens/ProductsListScreen';
-import { ProductDetailScreen } from '../screens/ProductDetail';
+import { ProductDetailScreen } from '../screens/ProductDetailScreen';
 
 const MainStack = createStackNavigator();
 
@@ -16,7 +16,7 @@ export function MainStackNavigator() {
         }}
       />
       <MainStack.Screen
-        name={'ProductDetail'}
+        name={'ProductDetailScreen'}
         component={ProductDetailScreen}
         options={{
           title:'Product Detail',
