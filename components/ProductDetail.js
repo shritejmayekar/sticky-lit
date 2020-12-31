@@ -4,7 +4,7 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import {BASE_URL} from '../config';
 import {Card} from './Card';
 
-export function Product({product, onPress}) {
+export function ProductDetail({product, onPress}) {
   return (
     <Card style={styles.card} onPress={onPress}>
       <Image
@@ -15,7 +15,11 @@ export function Product({product, onPress}) {
         <Text style={styles.name}>{product.name}</Text>
         <Text style={styles.price}>&#8377;&nbsp;{product.price}</Text>
         <Text style={styles.description}>{product.description}</Text>
+        
       </View>
+      
+
+     
     </Card>
   );
 }
@@ -25,7 +29,7 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   thumb: {
-    height: 260,
+    height: 550,
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
     resizeMode:'cover'
